@@ -17,4 +17,4 @@ postre(pastel).
 
 %Menús que ofrece el restaurante
 plato_principal(X) :- carne(X); pescado(X).
-menu(X, Y, Z) :- entrada(X), plato_principal(Y), postre(Z).
+menus_ofrecidos(X, Y, Z) :- entrada(X), plato_principal(Y), postre(Z).
