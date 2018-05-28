@@ -2,7 +2,7 @@
 
 entrada(paella).
 entrada(gazpacho).
-entrada(consomé).
+entrada(consome).
 
 carne(filete_de_cerdo).
 carne(pollo_asado).
@@ -20,8 +20,8 @@ postre(pastel).
 plato_principal(X) :- carne(X); pescado(X).
 menu(X, Y, Z) :- entrada(X), plato_principal(Y), postre(Z).
 
-%Menú solicitados
-menu_con_consome(X, Y, Z) :- menu(X, Y, Z), X == consomé.
+%Menús solicitados
+menu_con_consome(X, Y, Z) :- menu(X, Y, Z), X == consome.
 menu_sin_flan(X, Y ,Z) :- menu(X, Y, Z), not(Z == flan).
 
 %bebidas

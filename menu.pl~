@@ -31,3 +31,6 @@ bebida(cerveza).
 bebida(agua_mineral).
 
 %fin bebidas
+
+%Comida con elección de bebida
+menu_con_bebida(X, Y, Z, W) :- menu(X, Y, Z), bebida(W).
