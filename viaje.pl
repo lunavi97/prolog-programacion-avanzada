@@ -35,4 +35,10 @@ cantidad_de_semanas(2).
 %Viaje a la ciudad C durante S semanas con estancia en H cuesta P pesos
 viaje(C, S, H, P) :- transporte(C, PTransporte), alojamiento(C, H, PSemana), cantidad_de_semanas(S), multiplicar(PAlojamiento, PSemana, S), sumar(P, PTransporte, PAlojamiento).
 
+%Viaje con precio menor al máximo definido
+viaje_economico(C, S, H, P, Pmax) :- viaje(C, S, H, P), menor(P, Pmax).
+
+
+
+
 
