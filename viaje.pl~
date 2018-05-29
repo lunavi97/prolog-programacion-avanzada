@@ -17,7 +17,7 @@ alojamiento(tunez, camping, 5).
 %fin clauses
 
 %reglas secundarias
-multiplicar(P, X, Y) :- P is X*Y.
-sumar(S, X, Y) :- S is X+Y.
-menor(X, Y) :-  X<Y.
+multiplicar (P,X,Y):- P is X*Y.
+sumar (S,X,Y):- S is X+Y.
+menor (X,Y):-  X<Y.
 %fin reglas secundarias
