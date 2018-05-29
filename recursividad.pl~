@@ -70,4 +70,4 @@ cociente_restas_sucesivas(X, Y, C) :-
     ((X > 0, Y < 0); (X < 0, Y > 0)),
     X1 is X + Y,
     cociente_restas_sucesivas(X1, Y, C1),
-    C is C1 - 1.
+    C is C1 - 1, !.
