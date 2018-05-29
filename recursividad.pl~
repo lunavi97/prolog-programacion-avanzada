@@ -27,11 +27,23 @@ producto_sumas_sucesivas(X, Y, P) :-
     producto_sumas_sucesivas(X, Y1, P1),
     P is X + P1, !.
 producto_sumas_sucesivas(X, Y, P) :-
-    X > 0, Y < 0,
+    X > 0,
     X1 is X - 1,
     producto_sumas_sucesivas(X1, Y, P1),
     P is Y + P1, !.
 producto_sumas_sucesivas(X, Y, P) :-
-    X < 0, Y < 0,
-    XP is X * -1, YP is Y * -1,
+    XP is -X, YP is -Y,
     producto_sumas_sucesivas(XP, YP, P).
+
+
+potencia_multiplicaciones_sucesivas(X, 0, P) :- P is 1, not(X == 0), !.
+potencia_multiplicaciones_sucesivas(0, Y, P) :- P is 0, not(Y == 0), !.
+potencia_multiplicaciones_sucesivas(X, Y, P) :-
+    Y > 0,
+    Y1 is Y - 1,
+    potencia_multiplicaciones_sucesivas(X, Y1, P1),
+    P is X * P1, !.
+potencia_multiplicaciones_sucesivas(X, Y, P) :-
+    YP is -Y,
+    potencia_multiplicaciones_sucesivas(X, YP, P1),
+    P is 1 / P1.
