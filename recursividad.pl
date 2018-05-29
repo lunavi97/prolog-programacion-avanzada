@@ -48,3 +48,26 @@ potencia_multiplicaciones_sucesivas(X, Y, P) :-
     YP is -Y,
     potencia_multiplicaciones_sucesivas(X, YP, P1),
     P is 1 / P1.
+
+cociente_restas_sucesivas(X, Y, 0) :-
+    X >= 0, Y > 0,
+    X < Y, !.
+cociente_restas_sucesivas(X, Y, 0) :-
+    X =< 0, Y < 0,
+    Y < X, !.
+cociente_restas_sucesivas(X, Y, 0) :-
+    X =< 0, Y > 0,
+    Y > -X, !.
+cociente_restas_sucesivas(X, Y, 0) :-
+    X >= 0, Y < 0,
+    Y < -X, !.
+cociente_restas_sucesivas(X, Y, C) :-
+    ((X > 0, Y > 0); (X < 0, Y < 0)),
+    X1 is X - Y,
+    cociente_restas_sucesivas(X1, Y, C1),
+    C is 1 + C1, !.
+cociente_restas_sucesivas(X, Y, C) :-
+    ((X > 0, Y < 0); (X < 0, Y > 0)),
+    X1 is X + Y,
+    cociente_restas_sucesivas(X1, Y, C1),
+    C is C1 - 1, !.
