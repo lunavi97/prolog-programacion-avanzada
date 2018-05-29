@@ -26,6 +26,7 @@ parcial2(rocio, 7).
 parcial2(rosario, 3).
 parcial2(sandra, 8).
 parcial2(sol, 9).
+parcial2(vanesa, 4).
 
 %fin parciales
 
@@ -45,3 +46,6 @@ seleccionDeMenores(X) :- productoCartesiano(X, Y), X < Y.
 
 %Obtener los estudiantes que tienen el mayor promedio
 medalla_al_merito(Estudiante) :- promocionado(Estudiante, Prom), not(seleccionDeMenores(Prom)).
+
+%Estudiantes que adeudan uno de los parciales
+ausente(Nombre) :- (parcial1(Nombre, _); parcial2(Nombre, _)), not(presente(Nombre, _, _)).
