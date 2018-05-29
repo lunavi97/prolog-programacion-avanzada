@@ -11,3 +11,10 @@ fibonacci(N, Y) :-
     N1 is N - 1, N2 is N - 2,
     fibonacci(N1, Y1), fibonacci(N2, Y2),
     Y is Y1 + Y2.
+
+factorial(0, 1) :- !.
+factorial(N, Y) :-
+    N > 0,
+    N1 is N - 1,
+    factorial(N1, Y1),
+    Y is N * Y1.
