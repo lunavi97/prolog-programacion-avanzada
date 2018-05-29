@@ -19,55 +19,57 @@ factorial(N, Y) :-
     factorial(N1, Y1),
     Y is N * Y1.
 
-producto_sumas_sucesivas(0, _, 0) :- !.
-producto_sumas_sucesivas(_, 0, 0) :- !.
-producto_sumas_sucesivas(X, Y, P) :-
+producto(0, _, 0) :- !.
+producto(_, 0, 0) :- !.
+producto(X, Y, P) :-
     Y > 0,
     Y1 is Y - 1,
-    producto_sumas_sucesivas(X, Y1, P1),
+    producto(X, Y1, P1),
     P is X + P1, !.
-producto_sumas_sucesivas(X, Y, P) :-
+producto(X, Y, P) :-
     X > 0,
     X1 is X - 1,
-    producto_sumas_sucesivas(X1, Y, P1),
+    producto(X1, Y, P1),
     P is Y + P1, !.
-producto_sumas_sucesivas(X, Y, P) :-
+producto(X, Y, P) :-
     XP is -X, YP is -Y,
-    producto_sumas_sucesivas(XP, YP, P).
+    producto(XP, YP, P).
 
 
-potencia_multiplicaciones_sucesivas(X, 0, P) :- P is 1, not(X == 0), !.
-potencia_multiplicaciones_sucesivas(0, Y, P) :- P is 0, not(Y == 0), !.
-potencia_multiplicaciones_sucesivas(X, Y, P) :-
+potencia(X, 0, P) :- P is 1, not(X == 0), !.
+potencia(0, Y, P) :- P is 0, not(Y == 0), !.
+potencia(X, Y, P) :-
     Y > 0,
     Y1 is Y - 1,
-    potencia_multiplicaciones_sucesivas(X, Y1, P1),
+    potencia(X, Y1, P1),
     P is X * P1, !.
-potencia_multiplicaciones_sucesivas(X, Y, P) :-
+potencia(X, Y, P) :-
     Y < 0,
     YP is -Y,
-    potencia_multiplicaciones_sucesivas(X, YP, P1),
+    potencia(X, YP, P1),
     P is 1 / P1.
 
-cociente_restas_sucesivas(X, Y, 0) :-
+cociente(X, Y, 0) :-
     X >= 0, Y > 0,
     X < Y, !.
-cociente_restas_sucesivas(X, Y, 0) :-
+cociente(X, Y, 0) :-
     X =< 0, Y < 0,
     Y < X, !.
-cociente_restas_sucesivas(X, Y, 0) :-
+cociente(X, Y, 0) :-
     X =< 0, Y > 0,
     Y > -X, !.
-cociente_restas_sucesivas(X, Y, 0) :-
+cociente(X, Y, 0) :-
     X >= 0, Y < 0,
     Y < -X, !.
-cociente_restas_sucesivas(X, Y, C) :-
+cociente(X, Y, C) :-
     ((X > 0, Y > 0); (X < 0, Y < 0)),
     X1 is X - Y,
-    cociente_restas_sucesivas(X1, Y, C1),
+    cociente(X1, Y, C1),
     C is 1 + C1, !.
-cociente_restas_sucesivas(X, Y, C) :-
+cociente(X, Y, C) :-
     ((X > 0, Y < 0); (X < 0, Y > 0)),
     X1 is X + Y,
-    cociente_restas_sucesivas(X1, Y, C1),
+    cociente(X1, Y, C1),
     C is C1 - 1, !.
+
+

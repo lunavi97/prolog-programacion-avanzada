@@ -72,4 +72,25 @@ cociente(X, Y, C) :-
     cociente(X1, Y, C1),
     C is C1 - 1, !.
 
-
+cociente_con_resto(X, Y, 0, X) :-
+    X >= 0, Y > 0,
+    X < Y, !.
+cociente_con_resto(X, Y, 0, X) :-
+    X =< 0, Y < 0,
+    Y < X, !.
+cociente_con_resto(X, Y, 0, X) :-
+    X =< 0, Y > 0,
+    Y > -X, !.
+cociente_con_resto(X, Y, 0, X) :-
+    X >= 0, Y < 0,
+    Y < -X, !.
+cociente_con_resto(X, Y, C, R) :-
+    ((X > 0, Y > 0); (X < 0, Y < 0)),
+    X1 is X - Y,
+    cociente_con_resto(X1, Y, C1, R),
+    C is 1 + C1, !.
+cociente_con_resto(X, Y, C, R) :-
+    ((X > 0, Y < 0); (X < 0, Y > 0)),
+    X1 is X + Y,
+    cociente_con_resto(X1, Y, C1, R),
+    C is C1 - 1, !.
