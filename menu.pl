@@ -41,18 +41,18 @@ menu_con_bebida(X, Y, Z, W, Cal) :-
 
 
 %Menús que no tienen la menor cantidad de calorías
-proyeccion(Cal) :- menu(_, _, _, Cal).
-mayor_que_minimo(X) :- proyeccion(X), proyeccion(Y), X > Y.
+proyeccion_menu(Cal) :- menu(_, _, _, Cal).
+mayor_que_minimo_menu(X) :- proyeccion_menu(X), proyeccion_menu(Y), X > Y.
 
 %Menús con la menor cantidad de calorías
-menu_minimo(E, PP, P, Cal) :- menu(E, PP, P, Cal), not(mayor_que_minimo(Cal)).
+menu_minimo(E, PP, P, Cal) :- menu(E, PP, P, Cal), not(mayor_que_minimo_menu(Cal)).
 
 
 %Menús con bebida que no tienen la menor cantidad de calorías
-proyeccion_con_bebida(Cal) :- menu_con_bebida(_, _, _, _, Cal).
-mayor_que_minimo_con_bebida(X) :- proyeccion_con_bebida(X), proyeccion_con_bebida(Y), X > Y.
+proyeccion_menu_con_bebida(Cal) :- menu_con_bebida(_, _, _, _, Cal).
+mayor_que_minimo_menu_con_bebida(X) :- proyeccion_menu_con_bebida(X), proyeccion_menu_con_bebida(Y), X > Y.
 
 %Menús con bebida con la menor cantidad de calorías
-menu_con_bebida_minimo(E, PP, P, B, Cal) :- menu_con_bebida(E, PP, P, B, Cal), not(mayor_que_minimo_con_bebida(Cal)).
+menu_con_bebida_minimo(E, PP, P, B, Cal) :- menu_con_bebida(E, PP, P, B, Cal), not(mayor_que_minimo_menu_con_bebida(Cal)).
 
 
