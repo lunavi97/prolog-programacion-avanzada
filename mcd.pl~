@@ -1,0 +1,2 @@
+mcd(A, 0, A) :- !.
+mcd(A, B, Y) :- mcd(B, A mod B, Y).
